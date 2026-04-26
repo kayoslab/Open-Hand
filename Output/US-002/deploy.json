@@ -1,0 +1,1 @@
+{"decision":"pass","gates_checked":["lint","typecheck","tests"],"failures":[],"notes":"All quality gates pass. Lint: 0 errors. Typecheck: 0 errors. Tests: 33/33 passed across 3 test files (quality-scripts.test.ts, project-setup.test.ts, App.test.tsx)."}

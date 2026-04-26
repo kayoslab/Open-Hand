@@ -1,0 +1,341 @@
+{
+  "project": "open-hand",
+  "userStories": [
+    {
+      "id": "US-001",
+      "title": "Initialize Vite, React, and TypeScript workspace",
+      "description": "As a developer, I want a clean Vite, React, and TypeScript project so that the application can be developed locally and deployed as a static website.",
+      "acceptanceCriteria": [
+        "npm install completes successfully",
+        "npm run dev starts a local development server",
+        "npm run build creates a production build",
+        "npm run preview serves the built output",
+        "The default page loads in a browser",
+        "The project builds without TypeScript errors"
+      ],
+      "priority": 1,
+      "passes": false,
+      "depends_on": [],
+      "notes": "Foundation ticket.",
+      "status": "available"
+    },
+    {
+      "id": "US-002",
+      "title": "Add linting, formatting, typecheck, and unit test scripts",
+      "description": "As a developer, I want baseline engineering quality checks so that every later ticket has a clear definition of done.",
+      "acceptanceCriteria": [
+        "npm run lint exists",
+        "npm run typecheck exists",
+        "npm run test exists",
+        "ESLint is configured for React and TypeScript",
+        "At least one sample unit test passes"
+      ],
+      "priority": 1,
+      "passes": false,
+      "depends_on": ["US-001"],
+      "notes": "Required by all later tickets.",
+      "status": "available"
+    },
+    {
+      "id": "US-003",
+      "title": "Create repository folder structure and code boundaries",
+      "description": "As a developer, I want a clear project structure so that future changes remain maintainable and easy for junior developers to navigate.",
+      "acceptanceCriteria": [
+        "src/domain exists",
+        "src/data exists",
+        "src/features exists",
+        "src/ui exists",
+        "tests exists"
+      ],
+      "priority": 1,
+      "passes": false,
+      "depends_on": ["US-001"],
+      "notes": "Architecture foundation ticket.",
+      "status": "available"
+    },
+    {
+      "id": "US-004",
+      "title": "Create responsive application shell",
+      "description": "As a user, I want a clean responsive page shell so that the site works on mobile, tablet, and desktop devices.",
+      "acceptanceCriteria": [
+        "Header area exists",
+        "Main content area exists",
+        "Navigation area exists",
+        "No horizontal scrolling on mobile widths",
+        "Layout remains usable on desktop"
+      ],
+      "priority": 1,
+      "passes": false,
+      "depends_on": ["US-001", "US-002"],
+      "notes": "Feature pages plug into this shell.",
+      "status": "available"
+    },
+    {
+      "id": "US-005",
+      "title": "Define typed card domain model",
+      "description": "As a developer, I want a strict internal card model so that card content is consistent across all features.",
+      "acceptanceCriteria": [
+        "Card type exists",
+        "Tier type exists with Open, Working, Deep",
+        "Category type exists",
+        "PairsWith field is optional",
+        "TypeScript compilation succeeds"
+      ],
+      "priority": 1,
+      "passes": false,
+      "depends_on": ["US-003"],
+      "notes": "Pure domain ticket.",
+      "status": "available"
+    },
+    {
+      "id": "US-006",
+      "title": "Load and parse card_deck.csv",
+      "description": "As a developer, I want to load the deck from CSV so that non-developers can maintain card content.",
+      "acceptanceCriteria": [
+        "CSV file is imported at build time",
+        "Rows are parsed into typed card objects",
+        "Quoted commas are supported",
+        "Invalid rows fail with readable errors",
+        "Parser tests exist"
+      ],
+      "priority": 1,
+      "passes": false,
+      "depends_on": ["US-005"],
+      "notes": "CSV is source of truth.",
+      "status": "available"
+    },
+    {
+      "id": "US-007",
+      "title": "Normalize and validate card dataset",
+      "description": "As a developer, I want imported card data normalized so that the application uses safe and predictable content.",
+      "acceptanceCriteria": [
+        "Duplicate card numbers are rejected",
+        "Unknown tier values are rejected",
+        "Unknown category values are rejected or mapped intentionally",
+        "Cards are sorted by card number",
+        "Validation tests exist"
+      ],
+      "priority": 1,
+      "passes": false,
+      "depends_on": ["US-006"],
+      "notes": "Protects later UI tickets.",
+      "status": "available"
+    },
+    {
+      "id": "US-008",
+      "title": "Create reusable visual card component",
+      "description": "As a user, I want cards to look like premium physical deck cards so that the site feels engaging and intentional.",
+      "acceptanceCriteria": [
+        "Card shows title",
+        "Card shows question text",
+        "Card shows category",
+        "Card shows tier marker",
+        "Card shows flavour text when present"
+      ],
+      "priority": 1,
+      "passes": false,
+      "depends_on": ["US-004", "US-005"],
+      "notes": "Shared UI component.",
+      "status": "available"
+    },
+    {
+      "id": "US-009",
+      "title": "Add tier visual system",
+      "description": "As a user, I want Open, Working, and Deep cards clearly differentiated so that I understand conversation depth before selecting a card.",
+      "acceptanceCriteria": [
+        "Open tier uses green token",
+        "Working tier uses amber token",
+        "Deep tier uses blue token",
+        "Tier text label is visible",
+        "Colours remain readable"
+      ],
+      "priority": 2,
+      "passes": false,
+      "depends_on": ["US-008"],
+      "notes": "Accessibility included.",
+      "status": "available"
+    },
+    {
+      "id": "US-010",
+      "title": "Create browse all cards page",
+      "description": "As a user, I want to browse the complete deck so that I can intentionally choose discussion prompts.",
+      "acceptanceCriteria": [
+        "All cards render from dataset",
+        "Cards display in responsive grid or list",
+        "Cards remain readable on mobile",
+        "Loading empty state exists if data missing"
+      ],
+      "priority": 1,
+      "passes": false,
+      "depends_on": ["US-007", "US-008"],
+      "notes": "Core user journey.",
+      "status": "available"
+    },
+    {
+      "id": "US-011",
+      "title": "Add category filters",
+      "description": "As a user, I want to filter by card category so that I can focus on relevant conversation themes.",
+      "acceptanceCriteria": [
+        "Infrastructure filter works",
+        "Working Together filter works",
+        "Growth and Direction filter works",
+        "Feedback and Repair filter works",
+        "Clear filters action exists"
+      ],
+      "priority": 2,
+      "passes": false,
+      "depends_on": ["US-010"],
+      "notes": "Single-purpose filter ticket.",
+      "status": "available"
+    },
+    {
+      "id": "US-012",
+      "title": "Add tier filters",
+      "description": "As a user, I want to filter by Open, Working, or Deep so that I can control discussion intensity.",
+      "acceptanceCriteria": [
+        "Open filter works",
+        "Working filter works",
+        "Deep filter works",
+        "Multiple tiers can be active",
+        "Clear filters action exists"
+      ],
+      "priority": 2,
+      "passes": false,
+      "depends_on": ["US-010"],
+      "notes": "Separate from category filters.",
+      "status": "available"
+    },
+    {
+      "id": "US-013",
+      "title": "Add text search",
+      "description": "As a user, I want to search the deck so that I can quickly find relevant prompts.",
+      "acceptanceCriteria": [
+        "Search matches titles",
+        "Search matches question text",
+        "Search is case-insensitive",
+        "Results update without page reload",
+        "No-results message exists"
+      ],
+      "priority": 2,
+      "passes": false,
+      "depends_on": ["US-010"],
+      "notes": "Client-side search only.",
+      "status": "available"
+    },
+    {
+      "id": "US-014",
+      "title": "Create single random draw mode",
+      "description": "As a user, I want to draw a random card so that the deck can surprise me with useful conversation prompts.",
+      "acceptanceCriteria": [
+        "Draw button exists",
+        "One valid random card is shown",
+        "Previously drawn card is not repeated until full deck cycle completes or reset is used",
+        "Reset action reshuffles available pool"
+      ],
+      "priority": 1,
+      "passes": false,
+      "depends_on": ["US-007", "US-008"],
+      "notes": "Random logic must be testable.",
+      "status": "available"
+    },
+    {
+      "id": "US-015",
+      "title": "Create Draw Three Keep One mode",
+      "description": "As a user, I want the recommended 1:1 ritual available digitally so that I can run meetings directly from the site.",
+      "acceptanceCriteria": [
+        "Three unique cards are shown",
+        "User can choose one card",
+        "Chosen card remains visible",
+        "Unchosen cards are dismissed",
+        "New round reset exists"
+      ],
+      "priority": 1,
+      "passes": false,
+      "depends_on": ["US-014"],
+      "notes": "Implements play guide mechanic.",
+      "status": "available"
+    },
+    {
+      "id": "US-016",
+      "title": "Add pairing references",
+      "description": "As a user, I want to discover paired follow-up cards so that longer conversations can continue naturally.",
+      "acceptanceCriteria": [
+        "PairsWith references are read from data",
+        "Linked card can be opened",
+        "Missing pair references fail gracefully",
+        "No pairing section shown when empty"
+      ],
+      "priority": 3,
+      "passes": false,
+      "depends_on": ["US-010"],
+      "notes": "Optional enhancement.",
+      "status": "available"
+    },
+    {
+      "id": "US-017",
+      "title": "Create Play Guide page",
+      "description": "As a user, I want to understand how to use the deck so that I can run better conversations.",
+      "acceptanceCriteria": [
+        "Guide page exists",
+        "Sections for structure, ways to play, rituals, etiquette exist",
+        "Readable typography on mobile and desktop",
+        "Navigation link exists"
+      ],
+      "priority": 1,
+      "passes": false,
+      "depends_on": ["US-004"],
+      "notes": "Use supplied guide text.",
+      "status": "available"
+    },
+    {
+      "id": "US-018",
+      "title": "Persist lightweight preferences locally",
+      "description": "As a returning user, I want the site to remember my last used settings so that I do not reconfigure every visit.",
+      "acceptanceCriteria": [
+        "Last selected mode persists",
+        "Filters can persist",
+        "Broken saved data fails safely",
+        "No backend is required"
+      ],
+      "priority": 3,
+      "passes": false,
+      "depends_on": ["US-011", "US-012", "US-014"],
+      "notes": "Use localStorage only.",
+      "status": "available"
+    },
+    {
+      "id": "US-019",
+      "title": "Add accessibility and keyboard navigation",
+      "description": "As a user, I want the site accessible by keyboard and assistive technologies so that more people can use it.",
+      "acceptanceCriteria": [
+        "All interactive controls are keyboard reachable",
+        "Visible focus states exist",
+        "Buttons have accessible labels",
+        "Cards use semantic headings",
+        "Basic contrast requirements are met"
+      ],
+      "priority": 1,
+      "passes": false,
+      "depends_on": ["US-010", "US-014"],
+      "notes": "Mandatory quality ticket.",
+      "status": "available"
+    },
+    {
+      "id": "US-020",
+      "title": "Deploy static site to Vercel",
+      "description": "As a stakeholder, I want the website publicly available so that the deck can be shared and used immediately.",
+      "acceptanceCriteria": [
+        "Production deployment succeeds on Vercel",
+        "Client-side routes resolve correctly after refresh",
+        "No console errors on landing page",
+        "Browse page loads in production",
+        "Random draw mode works in production"
+      ],
+      "priority": 1,
+      "passes": false,
+      "depends_on": ["US-017", "US-019"],
+      "notes": "Release ticket.",
+      "status": "available"
+    }
+  ]
+}

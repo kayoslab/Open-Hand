@@ -14,10 +14,10 @@
         "The project builds without TypeScript errors"
       ],
       "priority": 1,
-      "passes": false,
+      "passes": true,
       "depends_on": [],
       "notes": "Foundation ticket.",
-      "status": "available"
+      "status": "pass"
     },
     {
       "id": "US-002",
@@ -32,7 +32,9 @@
       ],
       "priority": 1,
       "passes": false,
-      "depends_on": ["US-001"],
+      "depends_on": [
+        "US-001"
+      ],
       "notes": "Required by all later tickets.",
       "status": "available"
     },
@@ -49,7 +51,9 @@
       ],
       "priority": 1,
       "passes": false,
-      "depends_on": ["US-001"],
+      "depends_on": [
+        "US-001"
+      ],
       "notes": "Architecture foundation ticket.",
       "status": "available"
     },
@@ -66,7 +70,11 @@
       ],
       "priority": 1,
       "passes": false,
-      "depends_on": ["US-001", "US-002"],
+      "depends_on": [
+        "US-001",
+        "US-002",
+        "US-003"
+      ],
       "notes": "Feature pages plug into this shell.",
       "status": "available"
     },
@@ -83,7 +91,9 @@
       ],
       "priority": 1,
       "passes": false,
-      "depends_on": ["US-003"],
+      "depends_on": [
+        "US-003"
+      ],
       "notes": "Pure domain ticket.",
       "status": "available"
     },
@@ -100,7 +110,9 @@
       ],
       "priority": 1,
       "passes": false,
-      "depends_on": ["US-005"],
+      "depends_on": [
+        "US-005"
+      ],
       "notes": "CSV is source of truth.",
       "status": "available"
     },
@@ -117,7 +129,9 @@
       ],
       "priority": 1,
       "passes": false,
-      "depends_on": ["US-006"],
+      "depends_on": [
+        "US-006"
+      ],
       "notes": "Protects later UI tickets.",
       "status": "available"
     },
@@ -134,7 +148,10 @@
       ],
       "priority": 1,
       "passes": false,
-      "depends_on": ["US-004", "US-005"],
+      "depends_on": [
+        "US-004",
+        "US-005"
+      ],
       "notes": "Shared UI component.",
       "status": "available"
     },
@@ -151,7 +168,9 @@
       ],
       "priority": 2,
       "passes": false,
-      "depends_on": ["US-008"],
+      "depends_on": [
+        "US-008"
+      ],
       "notes": "Accessibility included.",
       "status": "available"
     },
@@ -167,7 +186,10 @@
       ],
       "priority": 1,
       "passes": false,
-      "depends_on": ["US-007", "US-008"],
+      "depends_on": [
+        "US-007",
+        "US-008"
+      ],
       "notes": "Core user journey.",
       "status": "available"
     },
@@ -184,7 +206,9 @@
       ],
       "priority": 2,
       "passes": false,
-      "depends_on": ["US-010"],
+      "depends_on": [
+        "US-010"
+      ],
       "notes": "Single-purpose filter ticket.",
       "status": "available"
     },
@@ -201,7 +225,9 @@
       ],
       "priority": 2,
       "passes": false,
-      "depends_on": ["US-010"],
+      "depends_on": [
+        "US-010"
+      ],
       "notes": "Separate from category filters.",
       "status": "available"
     },
@@ -218,7 +244,9 @@
       ],
       "priority": 2,
       "passes": false,
-      "depends_on": ["US-010"],
+      "depends_on": [
+        "US-010"
+      ],
       "notes": "Client-side search only.",
       "status": "available"
     },
@@ -234,7 +262,10 @@
       ],
       "priority": 1,
       "passes": false,
-      "depends_on": ["US-007", "US-008"],
+      "depends_on": [
+        "US-007",
+        "US-008"
+      ],
       "notes": "Random logic must be testable.",
       "status": "available"
     },
@@ -251,7 +282,9 @@
       ],
       "priority": 1,
       "passes": false,
-      "depends_on": ["US-014"],
+      "depends_on": [
+        "US-014"
+      ],
       "notes": "Implements play guide mechanic.",
       "status": "available"
     },
@@ -267,7 +300,9 @@
       ],
       "priority": 3,
       "passes": false,
-      "depends_on": ["US-010"],
+      "depends_on": [
+        "US-010"
+      ],
       "notes": "Optional enhancement.",
       "status": "available"
     },
@@ -283,7 +318,9 @@
       ],
       "priority": 1,
       "passes": false,
-      "depends_on": ["US-004"],
+      "depends_on": [
+        "US-004"
+      ],
       "notes": "Use supplied guide text.",
       "status": "available"
     },
@@ -299,7 +336,11 @@
       ],
       "priority": 3,
       "passes": false,
-      "depends_on": ["US-011", "US-012", "US-014"],
+      "depends_on": [
+        "US-011",
+        "US-012",
+        "US-014"
+      ],
       "notes": "Use localStorage only.",
       "status": "available"
     },
@@ -316,7 +357,10 @@
       ],
       "priority": 1,
       "passes": false,
-      "depends_on": ["US-010", "US-014"],
+      "depends_on": [
+        "US-010",
+        "US-014"
+      ],
       "notes": "Mandatory quality ticket.",
       "status": "available"
     },
@@ -333,7 +377,10 @@
       ],
       "priority": 1,
       "passes": false,
-      "depends_on": ["US-017", "US-019"],
+      "depends_on": [
+        "US-017",
+        "US-019"
+      ],
       "notes": "Release ticket.",
       "status": "available"
     }

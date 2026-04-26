@@ -1,1 +1,1 @@
-{"test_results":"pass","failures":[],"tests_added":["tests/unit/App.test.tsx","tests/unit/project-setup.test.ts","tests/e2e/page-loads.spec.ts"],"tests_modified":[],"failure_source":null}
+{"test_results":"pass","failures":[],"tests_added":["tests/unit/App.test.tsx","tests/unit/project-setup.test.ts","tests/e2e/page-loads.spec.ts"],"tests_modified":[]}

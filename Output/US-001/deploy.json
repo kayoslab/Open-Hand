@@ -1,0 +1,1 @@
+{"decision":"pass","gates_checked":["install","typecheck","lint","tests","build"],"failures":[],"notes":"All gates pass: install (0 vulnerabilities), typecheck (clean), lint (clean), tests (16/16 passed across 2 files), build (produces dist/index.html + JS bundle)."}

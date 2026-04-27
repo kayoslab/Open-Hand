@@ -186,14 +186,13 @@
         "Loading empty state exists if data missing"
       ],
       "priority": 1,
-      "passes": false,
+      "passes": true,
       "depends_on": [
         "US-007",
         "US-008"
       ],
       "notes": "Core user journey.",
-      "status": "in_progress",
-      "claimed_by": "worker-3"
+      "status": "pass"
     },
     {
       "id": "US-011",

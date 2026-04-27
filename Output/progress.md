@@ -18,3 +18,5 @@
 
 ## US-017: Create Play Guide page
 
+## US-010: Create browse all cards page
+

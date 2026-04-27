@@ -30,3 +30,5 @@
 
 ## US-012: Add tier filters
 
+## US-016: Add pairing references
+

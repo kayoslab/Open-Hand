@@ -300,13 +300,12 @@
         "No pairing section shown when empty"
       ],
       "priority": 3,
-      "passes": false,
+      "passes": true,
       "depends_on": [
         "US-010"
       ],
       "notes": "Optional enhancement.",
-      "status": "in_progress",
-      "claimed_by": "worker-3"
+      "status": "pass"
     },
     {
       "id": "US-017",

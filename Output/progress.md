@@ -14,3 +14,5 @@
 
 ## US-007: Normalize and validate card dataset
 
+## US-009: Add tier visual system
+

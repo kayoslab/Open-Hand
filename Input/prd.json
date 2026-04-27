@@ -168,13 +168,12 @@
         "Colours remain readable"
       ],
       "priority": 2,
-      "passes": false,
+      "passes": true,
       "depends_on": [
         "US-008"
       ],
       "notes": "Accessibility included.",
-      "status": "in_progress",
-      "claimed_by": "worker-2"
+      "status": "pass"
     },
     {
       "id": "US-010",
@@ -193,7 +192,8 @@
         "US-008"
       ],
       "notes": "Core user journey.",
-      "status": "available"
+      "status": "in_progress",
+      "claimed_by": "worker-3"
     },
     {
       "id": "US-011",

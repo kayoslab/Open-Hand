@@ -26,3 +26,5 @@
 
 ## US-015: Create Draw Three Keep One mode
 
+## US-013: Add text search
+

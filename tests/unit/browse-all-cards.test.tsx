@@ -220,4 +220,90 @@ describe('BrowseAllCards', () => {
       expect(screen.getByText(/1 cards?/)).toBeDefined();
     });
   });
+
+  describe('US-016: pairing references in browse view', () => {
+    it('renders a pairing section on cards that have pairsWith references', () => {
+      fillMockCards([
+        makeCard({ cardNumber: 6, prompt: 'Card Six', pairsWith: 7 }),
+        makeCard({ cardNumber: 7, prompt: 'Card Seven' }),
+      ]);
+
+      render(<BrowseAllCards />);
+
+      expect(screen.getByText(/pairs with/i)).toBeDefined();
+      expect(screen.getByText(/Card Seven/)).toBeDefined();
+    });
+
+    it('does not render a pairing section on cards without pairsWith', () => {
+      fillMockCards([
+        makeCard({ cardNumber: 1, prompt: 'No Pair Card' }),
+        makeCard({ cardNumber: 2, prompt: 'Also No Pair' }),
+      ]);
+
+      render(<BrowseAllCards />);
+
+      expect(screen.queryByText(/pairs with/i)).toBeNull();
+    });
+
+    it('handles missing pair reference gracefully — no pairing section rendered', () => {
+      // Card references a pairsWith card that does not exist in the deck
+      fillMockCards([
+        makeCard({ cardNumber: 1, prompt: 'Orphan Card', pairsWith: 99 }),
+      ]);
+
+      render(<BrowseAllCards />);
+
+      // Should not crash, and should not show pairing section
+      expect(screen.queryByText(/pairs with/i)).toBeNull();
+      // The card itself still renders
+      expect(screen.getByText('Orphan Card')).toBeDefined();
+    });
+
+    it('renders pairing sections only on cards that have valid pairsWith', () => {
+      fillMockCards([
+        makeCard({ cardNumber: 1, prompt: 'Unpaired One' }),
+        makeCard({ cardNumber: 2, prompt: 'Paired Two', pairsWith: 3 }),
+        makeCard({ cardNumber: 3, prompt: 'Target Three' }),
+      ]);
+
+      render(<BrowseAllCards />);
+
+      // Only one pairing section should exist (on card 2)
+      const pairsElements = screen.getAllByText(/pairs with/i);
+      expect(pairsElements).toHaveLength(1);
+    });
+
+    it('clicking a pair link scrolls the target card into view', () => {
+      fillMockCards([
+        makeCard({ cardNumber: 6, prompt: 'Source Card', pairsWith: 7 }),
+        makeCard({ cardNumber: 7, prompt: 'Target Card' }),
+      ]);
+
+      render(<BrowseAllCards />);
+
+      // Find and click the pair link
+      const pairLink = screen.getByText(/Target Card/);
+      fireEvent.click(pairLink);
+
+      // The target card should have data-card-number attribute for scroll targeting
+      const articles = screen.getAllByRole('article');
+      const targetArticle = articles.find(
+        (a) => a.getAttribute('data-card-number') === '7',
+      );
+      expect(targetArticle).toBeDefined();
+    });
+
+    it('each card article has a data-card-number attribute for scroll targeting', () => {
+      fillMockCards([
+        makeCard({ cardNumber: 10, prompt: 'Card Ten' }),
+        makeCard({ cardNumber: 20, prompt: 'Card Twenty' }),
+      ]);
+
+      render(<BrowseAllCards />);
+
+      const articles = screen.getAllByRole('article');
+      expect(articles[0].getAttribute('data-card-number')).toBe('10');
+      expect(articles[1].getAttribute('data-card-number')).toBe('20');
+    });
+  });
 });

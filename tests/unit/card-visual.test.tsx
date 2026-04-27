@@ -1,5 +1,5 @@
-import { describe, it, expect } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { describe, it, expect, vi } from 'vitest';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { CardVisual } from '../../src/ui/CardVisual/CardVisual';
 import type { Card } from '../../src/domain/card';
 
@@ -131,5 +131,103 @@ describe('CardVisual – tier token visual system (US-009)', () => {
     const firstChild = article.firstElementChild;
     expect(firstChild).toBeDefined();
     expect(firstChild!.textContent).toBe('Open');
+  });
+});
+
+describe('CardVisual – pairing references (US-016)', () => {
+  const pairedCard: Card = {
+    cardNumber: 7,
+    category: 'Infrastructure',
+    tier: 'Working',
+    prompt: 'Follow-Up Check',
+    guidance: 'How did the last conversation land?',
+    flavourText: 'Continuity matters.',
+  };
+
+  const cardWithPairing: Card = {
+    ...baseCard,
+    cardNumber: 6,
+    pairsWith: 7,
+  };
+
+  const cardWithoutPairing: Card = {
+    ...baseCard,
+    cardNumber: 1,
+    // pairsWith is undefined
+  };
+
+  it('renders a pairing section when pairedCard is provided', () => {
+    render(
+      <CardVisual card={cardWithPairing} pairedCard={pairedCard} />,
+    );
+
+    expect(screen.getByText(/pairs with/i)).toBeDefined();
+    expect(screen.getByText(/Follow-Up Check/)).toBeDefined();
+  });
+
+  it('does not render a pairing section when pairsWith is undefined', () => {
+    render(<CardVisual card={cardWithoutPairing} />);
+
+    expect(screen.queryByText(/pairs with/i)).toBeNull();
+  });
+
+  it('does not render a pairing section when pairsWith is defined but pairedCard is undefined (graceful failure)', () => {
+    render(<CardVisual card={cardWithPairing} />);
+
+    expect(screen.queryByText(/pairs with/i)).toBeNull();
+  });
+
+  it('renders the paired card prompt as a clickable link', () => {
+    const onClick = vi.fn();
+    render(
+      <CardVisual
+        card={cardWithPairing}
+        pairedCard={pairedCard}
+        onPairClick={onClick}
+      />,
+    );
+
+    const pairLink = screen.getByText(/Follow-Up Check/);
+    expect(pairLink).toBeDefined();
+    fireEvent.click(pairLink);
+    expect(onClick).toHaveBeenCalledWith(7);
+  });
+
+  it('calls onPairClick with the paired card number when clicked', () => {
+    const onClick = vi.fn();
+    render(
+      <CardVisual
+        card={cardWithPairing}
+        pairedCard={pairedCard}
+        onPairClick={onClick}
+      />,
+    );
+
+    const pairLink = screen.getByText(/Follow-Up Check/);
+    fireEvent.click(pairLink);
+
+    expect(onClick).toHaveBeenCalledTimes(1);
+    expect(onClick).toHaveBeenCalledWith(7);
+  });
+
+  it('pairing section is inside the card article element', () => {
+    render(
+      <CardVisual card={cardWithPairing} pairedCard={pairedCard} />,
+    );
+
+    const article = screen.getByRole('article');
+    const pairsText = screen.getByText(/pairs with/i);
+    expect(article.contains(pairsText)).toBe(true);
+  });
+
+  it('does not break existing rendering when optional pairing props are omitted', () => {
+    render(<CardVisual card={baseCard} />);
+
+    // All original elements still render
+    expect(screen.getByText('Check In')).toBeDefined();
+    expect(screen.getByText('How are you arriving today?')).toBeDefined();
+    expect(screen.getByText('Working Together')).toBeDefined();
+    expect(screen.getByText('Open')).toBeDefined();
+    expect(screen.getByText('Start with presence.')).toBeDefined();
   });
 });

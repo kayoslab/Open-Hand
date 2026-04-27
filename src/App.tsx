@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Layout } from './ui/Layout/Layout'
 import { PlayGuide } from './features/guide'
+import { BrowseAllCards } from './features/browse'
 
 function getPath() {
   return window.location.pathname
@@ -44,6 +45,8 @@ function App() {
     <Layout>
       {path === '/guide' ? (
         <PlayGuide />
+      ) : path === '/browse' ? (
+        <BrowseAllCards />
       ) : (
         <>
           <h2>Card Deck v2</h2>

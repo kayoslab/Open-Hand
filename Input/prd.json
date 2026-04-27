@@ -129,13 +129,12 @@
         "Validation tests exist"
       ],
       "priority": 1,
-      "passes": false,
+      "passes": true,
       "depends_on": [
         "US-006"
       ],
       "notes": "Protects later UI tickets.",
-      "status": "in_progress",
-      "claimed_by": "worker-3"
+      "status": "pass"
     },
     {
       "id": "US-008",
@@ -174,7 +173,8 @@
         "US-008"
       ],
       "notes": "Accessibility included.",
-      "status": "available"
+      "status": "in_progress",
+      "claimed_by": "worker-2"
     },
     {
       "id": "US-010",

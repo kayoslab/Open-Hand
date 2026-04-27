@@ -12,3 +12,5 @@
 
 ## US-008: Create reusable visual card component
 
+## US-007: Normalize and validate card dataset
+

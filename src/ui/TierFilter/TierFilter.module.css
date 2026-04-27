@@ -1,0 +1,76 @@
+.tierFilter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
+.tierButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: 9999px;
+  background: var(--color-surface);
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.tierButton:focus-visible {
+  box-shadow: var(--focus-ring);
+  outline: none;
+}
+
+.indicator {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+}
+
+.open .indicator {
+  background: var(--color-tier-open);
+}
+
+.working .indicator {
+  background: var(--color-tier-working);
+}
+
+.deep .indicator {
+  background: var(--color-tier-deep);
+}
+
+.open[aria-pressed='true'] {
+  background: var(--color-tier-open-bg);
+  border-color: var(--color-tier-open);
+}
+
+.working[aria-pressed='true'] {
+  background: var(--color-tier-working-bg);
+  border-color: var(--color-tier-working);
+}
+
+.deep[aria-pressed='true'] {
+  background: var(--color-tier-deep-bg);
+  border-color: var(--color-tier-deep);
+}
+
+.clearButton {
+  padding: var(--space-xs) var(--space-sm);
+  border: none;
+  background: none;
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.clearButton:focus-visible {
+  box-shadow: var(--focus-ring);
+  outline: none;
+}

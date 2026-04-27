@@ -1,2 +1,1 @@
-// Guide feature: play guide content
-export {};
+export { PlayGuide } from './PlayGuide';

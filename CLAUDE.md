@@ -2,7 +2,7 @@
 
 ## Project Purpose
 
-Card Deck v2 is a browser-based companion website for a 57-card facilitation deck used in 1:1 meetings, feedback conversations, skip-levels, retrospectives, and growth discussions.
+Open Hand is a browser-based companion website for a 57-card facilitation deck used in 1:1 meetings, feedback conversations, skip-levels, retrospectives, and growth discussions.
 
 The website must serve two equally important use cases:
 

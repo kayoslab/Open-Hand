@@ -55,8 +55,7 @@
         "US-001"
       ],
       "notes": "Architecture foundation ticket.",
-      "status": "in_progress",
-      "claimed_by": "worker-1"
+      "status": "available"
     },
     {
       "id": "US-004",

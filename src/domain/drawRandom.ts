@@ -33,6 +33,20 @@ export function drawOne(pool: DrawPool): { card: Card | null; pool: DrawPool } {
   };
 }
 
+export function drawThree(pool: DrawPool): { cards: Card[]; pool: DrawPool } {
+  const drawn: Card[] = [];
+  let current = pool;
+
+  for (let i = 0; i < 3; i++) {
+    const result = drawOne(current);
+    if (!result.card) break;
+    drawn.push(result.card);
+    current = result.pool;
+  }
+
+  return { cards: drawn, pool: current };
+}
+
 export function resetPool(cards: Card[]): DrawPool {
   return createDrawPool(cards);
 }

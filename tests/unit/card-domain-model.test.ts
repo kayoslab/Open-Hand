@@ -12,7 +12,7 @@ import { describe, it, expect, expectTypeOf } from "vitest";
 describe("US-005: Typed card domain model", () => {
   describe("types are importable from domain barrel", () => {
     it("exports Card type", async () => {
-      const domain = await import("../../src/domain/index.js");
+      await import("../../src/domain/index.js");
       // If Card is a type-only export, it won't appear at runtime.
       // The real check is that this file compiles with the import below.
       expect(true).toBe(true);

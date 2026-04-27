@@ -16,3 +16,5 @@
 
 ## US-009: Add tier visual system
 
+## US-017: Create Play Guide page
+

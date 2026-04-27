@@ -2,4 +2,4 @@
 export type { Card, Tier, Category } from "./card";
 export { createDrawPool, drawOne, drawThree, resetPool } from "./drawRandom";
 export type { DrawPool } from "./drawRandom";
-export { filterByTier, filterByCategories } from "./filterCards";
+export { filterByTier, filterByText, filterByCategories } from "./filterCards";

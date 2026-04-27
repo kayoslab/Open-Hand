@@ -1,0 +1,1 @@
+{"decision":"pass","gates_checked":["lint","typecheck","tests"],"failures":[],"notes":"All gates green. Lint: no violations. Typecheck: no errors. Tests: 87/87 passed (6 suites), including 16 new parse-card-csv tests covering valid parsing, quoted commas, invalid rows, and real CSV integration."}

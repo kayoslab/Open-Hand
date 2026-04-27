@@ -1,0 +1,1 @@
+{"approved":true,"concerns":["Vite ?raw import from Input/ (outside src/) may need Vite config adjustment — correctly flagged as a risk in the plan","Consider trimming whitespace from parsed CSV fields to handle trailing spaces in real data — not explicitly mentioned in parsing logic"]}

@@ -1,0 +1,22 @@
+.header {
+  background: var(--color-brand);
+  color: #fff;
+  padding: var(--space-md) var(--space-lg);
+}
+
+.title {
+  font-family: var(--font-family);
+  font-size: var(--font-size-xl);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+@media (min-width: 768px) {
+  .header {
+    padding: var(--space-lg) var(--space-xl);
+  }
+
+  .title {
+    font-size: var(--font-size-2xl);
+  }
+}

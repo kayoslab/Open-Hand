@@ -1,25 +1,38 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { Layout } from './ui/Layout/Layout'
 import { PlayGuide } from './features/guide'
 import { BrowseAllCards } from './features/browse'
 import { SingleDraw } from './features/play/SingleDraw'
 import { DrawThreeKeepOne } from './features/play/DrawThreeKeepOne'
 import { cardDeck } from './data'
+import { useLocalStorage } from './hooks/useLocalStorage'
+import { validateRoute } from './domain/preferences'
 
-function getRoute(): string {
-  return window.location.hash.replace('#', '') || '/'
+function getHashRoute(): string {
+  return window.location.hash.replace('#', '') || ''
 }
 
 function App() {
-  const [route, setRoute] = useState(getRoute)
+  const [route, setRoute] = useLocalStorage('openhand:lastRoute', '/', validateRoute)
+
+  useEffect(() => {
+    const hash = getHashRoute()
+    if (hash) {
+      setRoute(validateRoute(hash) ? hash : '/')
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   useEffect(() => {
     function onHashChange() {
-      setRoute(getRoute())
+      const hash = getHashRoute()
+      if (hash) {
+        setRoute(validateRoute(hash) ? hash : '/')
+      }
     }
     window.addEventListener('hashchange', onHashChange)
     return () => window.removeEventListener('hashchange', onHashChange)
-  }, [])
+  }, [setRoute])
 
   return (
     <Layout>

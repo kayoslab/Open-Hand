@@ -1,2 +1,2 @@
 // Play feature: draw modes and game interactions
-export {};
+export { SingleDraw } from './SingleDraw';

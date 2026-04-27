@@ -75,8 +75,10 @@ describe('SingleDraw', () => {
       fireEvent.click(drawButton);
       const article = screen.getByRole('article');
       const text = article.textContent ?? '';
-      // Extract the prompt — it's the card title
-      const matchedPrompt = cards.find((c) => text.includes(c.prompt))?.prompt;
+      // Extract the prompt — match longest first to avoid substring false positives
+      const matchedPrompt = [...cards]
+        .sort((a, b) => b.prompt.length - a.prompt.length)
+        .find((c) => text.includes(c.prompt))?.prompt;
       expect(matchedPrompt).toBeDefined();
       expect(seenPrompts.has(matchedPrompt!)).toBe(false);
       seenPrompts.add(matchedPrompt!);

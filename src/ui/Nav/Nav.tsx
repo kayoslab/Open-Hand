@@ -1,10 +1,10 @@
 import styles from './Nav.module.css';
 
 const navItems = [
-  { label: 'Home', href: '/' },
-  { label: 'Browse', href: '/browse' },
-  { label: 'Play', href: '/play' },
-  { label: 'Guide', href: '/guide' },
+  { label: 'Home', href: '#/' },
+  { label: 'Browse', href: '#/browse' },
+  { label: 'Play', href: '#/play' },
+  { label: 'Guide', href: '#/guide' },
 ];
 
 export function Nav() {

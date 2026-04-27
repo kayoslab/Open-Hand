@@ -1,0 +1,1 @@
+{"test_results":"fail","failures":["src/domain/card.ts file exists - file not yet created","src/domain/index.ts re-exports from card module - barrel does not yet re-export card types"],"failure_source":"tests","tests_added":["tests/unit/card-domain-model.test.ts"],"tests_modified":[]}

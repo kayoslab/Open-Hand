@@ -24,3 +24,5 @@
 
 ## US-011: Add category filters
 
+## US-015: Create Draw Three Keep One mode
+

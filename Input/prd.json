@@ -282,13 +282,12 @@
         "New round reset exists"
       ],
       "priority": 1,
-      "passes": false,
+      "passes": true,
       "depends_on": [
         "US-014"
       ],
       "notes": "Implements play guide mechanic.",
-      "status": "in_progress",
-      "claimed_by": "worker-1"
+      "status": "pass"
     },
     {
       "id": "US-016",
@@ -364,7 +363,8 @@
         "US-014"
       ],
       "notes": "Mandatory quality ticket.",
-      "status": "available"
+      "status": "in_progress",
+      "claimed_by": "worker-3"
     },
     {
       "id": "US-020",

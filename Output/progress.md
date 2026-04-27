@@ -28,3 +28,5 @@
 
 ## US-013: Add text search
 
+## US-012: Add tier filters
+

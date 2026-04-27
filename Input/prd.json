@@ -225,13 +225,12 @@
         "Clear filters action exists"
       ],
       "priority": 2,
-      "passes": false,
+      "passes": true,
       "depends_on": [
         "US-010"
       ],
       "notes": "Separate from category filters.",
-      "status": "in_progress",
-      "claimed_by": "worker-2"
+      "status": "pass"
     },
     {
       "id": "US-013",
@@ -306,7 +305,8 @@
         "US-010"
       ],
       "notes": "Optional enhancement.",
-      "status": "available"
+      "status": "in_progress",
+      "claimed_by": "worker-3"
     },
     {
       "id": "US-017",

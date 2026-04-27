@@ -1,15 +1,18 @@
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import type { Card, Tier } from '../../domain/card';
 import { filterByTier, filterByText } from '../../domain/filterCards';
 import { cardDeck } from '../../data/loadCardDeck';
 import { CardVisual } from '../../ui/CardVisual/CardVisual';
 import { TierFilter } from '../../ui/TierFilter/TierFilter';
 import { SearchInput } from '../../ui/SearchInput/SearchInput';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { validateTierArray, validateSearchQuery } from '../../domain/preferences';
 import styles from './BrowseAllCards.module.css';
 
 export function BrowseAllCards() {
-  const [activeTiers, setActiveTiers] = useState<Set<Tier>>(new Set());
-  const [searchQuery, setSearchQuery] = useState('');
+  const [tierArray, setTierArray] = useLocalStorage<Tier[]>('openhand:activeTiers', [], validateTierArray);
+  const [searchQuery, setSearchQuery] = useLocalStorage<string>('openhand:searchQuery', '', validateSearchQuery);
+  const activeTiers = useMemo(() => new Set(tierArray), [tierArray]);
 
   const cardLookup = useMemo(() => {
     const map = new Map<number, Card>();
@@ -25,18 +28,16 @@ export function BrowseAllCards() {
   };
 
   const handleToggle = (tier: Tier) => {
-    setActiveTiers((prev) => {
-      const next = new Set(prev);
-      if (next.has(tier)) {
-        next.delete(tier);
-      } else {
-        next.add(tier);
-      }
-      return next;
-    });
+    const set = new Set(tierArray);
+    if (set.has(tier)) {
+      set.delete(tier);
+    } else {
+      set.add(tier);
+    }
+    setTierArray([...set]);
   };
 
-  const handleClear = () => setActiveTiers(new Set());
+  const handleClear = () => setTierArray([]);
 
   if (cardDeck.length === 0) {
     return (

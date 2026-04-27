@@ -1,0 +1,1 @@
+{"test_results":"pass","failures":[],"tests_added":["tests/unit/useLocalStorage.test.ts","tests/unit/preferences.test.ts","tests/unit/persistence-integration.test.tsx"],"tests_modified":[],"failure_source":null}

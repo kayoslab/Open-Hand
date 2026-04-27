@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import type { Tier } from '../../domain/card';
+import { useMemo, useState } from 'react';
+import type { Card, Tier } from '../../domain/card';
 import { filterByTier, filterByText } from '../../domain/filterCards';
 import { cardDeck } from '../../data/loadCardDeck';
 import { CardVisual } from '../../ui/CardVisual/CardVisual';
@@ -10,6 +10,19 @@ import styles from './BrowseAllCards.module.css';
 export function BrowseAllCards() {
   const [activeTiers, setActiveTiers] = useState<Set<Tier>>(new Set());
   const [searchQuery, setSearchQuery] = useState('');
+
+  const cardLookup = useMemo(() => {
+    const map = new Map<number, Card>();
+    for (const card of cardDeck) {
+      map.set(card.cardNumber, card);
+    }
+    return map;
+  }, []);
+
+  const handlePairClick = (cardNumber: number) => {
+    const target = document.querySelector(`[data-card-number="${cardNumber}"]`);
+    target?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  };
 
   const handleToggle = (tier: Tier) => {
     setActiveTiers((prev) => {
@@ -47,9 +60,26 @@ export function BrowseAllCards() {
         <p className={styles.emptyState}>No cards match your search.</p>
       ) : (
         <div className={styles.grid}>
-          {filteredCards.map((card) => (
-            <CardVisual key={card.cardNumber} card={card} />
-          ))}
+          {filteredCards.map((card) => {
+            const paired = card.pairsWith != null
+              ? cardLookup.get(card.pairsWith)
+              : undefined;
+            return (
+              <CardVisual key={card.cardNumber} card={card}>
+                {paired && (
+                  <div className={styles.pairing}>
+                    <button
+                      type="button"
+                      className={styles.pairingLink}
+                      onClick={() => handlePairClick(paired.cardNumber)}
+                    >
+                      Pairs with
+                    </button>
+                  </div>
+                )}
+              </CardVisual>
+            );
+          })}
         </div>
       )}
     </div>

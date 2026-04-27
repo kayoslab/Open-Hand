@@ -1,8 +1,12 @@
+import type { ReactNode } from 'react';
 import type { Card } from '../../domain/card';
 import styles from './CardVisual.module.css';
 
 interface CardVisualProps {
   card: Card;
+  pairedCard?: Card;
+  onPairClick?: (cardNumber: number) => void;
+  children?: ReactNode;
 }
 
 const tierClass: Record<Card['tier'], string> = {
@@ -11,9 +15,13 @@ const tierClass: Record<Card['tier'], string> = {
   Deep: styles.tierDeep,
 };
 
-export function CardVisual({ card }: CardVisualProps) {
+export function CardVisual({ card, pairedCard, onPairClick, children }: CardVisualProps) {
   return (
-    <article className={`${styles.card} ${tierClass[card.tier]}`} data-tier={card.tier}>
+    <article
+      className={`${styles.card} ${tierClass[card.tier]}`}
+      data-tier={card.tier}
+      data-card-number={card.cardNumber}
+    >
       <div className={styles.tierMarker}>{card.tier}</div>
       <h3 className={styles.title}>{card.prompt}</h3>
       <p className={styles.question}>{card.guidance}</p>
@@ -21,6 +29,18 @@ export function CardVisual({ card }: CardVisualProps) {
       {card.flavourText !== '' && (
         <p className={styles.flavourText}>{card.flavourText}</p>
       )}
+      {pairedCard && (
+        <div className={styles.pairing}>
+          <button
+            type="button"
+            className={`${styles.pairingLink} ${tierClass[pairedCard.tier]}`}
+            onClick={() => onPairClick?.(pairedCard.cardNumber)}
+          >
+            Pairs with {pairedCard.prompt}
+          </button>
+        </div>
+      )}
+      {children}
     </article>
   );
 }

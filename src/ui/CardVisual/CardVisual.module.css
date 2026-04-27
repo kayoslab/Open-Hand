@@ -97,6 +97,49 @@
   }
 }
 
+.pairing {
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-top: var(--space-xs);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--color-border);
+}
+
+.pairingLabel {
+  color: var(--color-text-muted);
+}
+
+.pairingLink {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.pairingLink:hover {
+  color: var(--color-text-muted);
+}
+
+.tierOpen .pairingLink {
+  text-decoration-color: var(--color-tier-open);
+}
+
+.tierWorking .pairingLink {
+  text-decoration-color: var(--color-tier-working);
+}
+
+.tierDeep .pairingLink {
+  text-decoration-color: var(--color-tier-deep);
+}
+
 @media (min-width: 1025px) {
   .card {
     padding: var(--space-xl);

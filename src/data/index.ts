@@ -1,2 +1,3 @@
 // Data layer: CSV loading, parsing, and normalization
-export {};
+export { parseCardCsv } from "./parseCardCsv";
+export { cardDeck } from "./loadCardDeck";

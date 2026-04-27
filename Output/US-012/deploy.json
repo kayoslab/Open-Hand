@@ -1,1 +1,1 @@
-{"decision":"pass","gates_checked":["lint","typecheck","tests"],"failures":[],"notes":"All gates green: ESLint clean, tsc --noEmit clean, 200/200 vitest tests passing across 15 files including US-012 filter-cards (13), tier-filter (11), and browse-all-cards (12) tests."}
+{"decision":"pass","gates_checked":["lint","typecheck","tests"],"failures":[],"notes":"All 288 tests pass across 21 files. Lint and typecheck clean. US-012 tier filter tests included: filter-cards.test.ts (13), tier-filter.test.tsx (11), browse-all-cards.test.tsx (12)."}

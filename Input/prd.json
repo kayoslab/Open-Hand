@@ -343,7 +343,8 @@
         "US-014"
       ],
       "notes": "Use localStorage only.",
-      "status": "available"
+      "status": "in_progress",
+      "claimed_by": "worker-3"
     },
     {
       "id": "US-019",
@@ -357,14 +358,13 @@
         "Basic contrast requirements are met"
       ],
       "priority": 1,
-      "passes": false,
+      "passes": true,
       "depends_on": [
         "US-010",
         "US-014"
       ],
       "notes": "Mandatory quality ticket.",
-      "status": "in_progress",
-      "claimed_by": "worker-1"
+      "status": "pass"
     },
     {
       "id": "US-020",

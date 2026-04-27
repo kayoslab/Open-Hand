@@ -32,3 +32,5 @@
 
 ## US-016: Add pairing references
 
+## US-019: Add accessibility and keyboard navigation
+

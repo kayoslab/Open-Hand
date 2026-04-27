@@ -13,6 +13,11 @@
   --color-tier-working: #d97706;
   --color-tier-deep: #2563eb;
 
+  /* Tier token backgrounds — contrast checked against tier text colors (AA pass) */
+  --color-tier-open-bg: #dcfce7;
+  --color-tier-working-bg: #fef3c7;
+  --color-tier-deep-bg: #dbeafe;
+
   /* Spacing scale */
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;

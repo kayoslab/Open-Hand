@@ -76,7 +76,8 @@
         "US-003"
       ],
       "notes": "Feature pages plug into this shell.",
-      "status": "available"
+      "status": "in_progress",
+      "claimed_by": "worker-2"
     },
     {
       "id": "US-005",
@@ -90,13 +91,13 @@
         "TypeScript compilation succeeds"
       ],
       "priority": 1,
-      "passes": false,
+      "passes": true,
       "depends_on": [
         "US-002",
         "US-003"
       ],
       "notes": "Pure domain ticket.",
-      "status": "available"
+      "status": "pass"
     },
     {
       "id": "US-006",

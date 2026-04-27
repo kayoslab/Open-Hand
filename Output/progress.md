@@ -4,3 +4,5 @@
 
 ## US-003: Create repository folder structure and code boundaries
 
+## US-005: Define typed card domain model
+

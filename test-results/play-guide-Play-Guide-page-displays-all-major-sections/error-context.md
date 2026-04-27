@@ -28,18 +28,29 @@ Call log:
 # Page snapshot
 
 ```yaml
-- generic [ref=e2]:
-  - text: "Error: ENOENT: no such file or directory, open '/Users/cr0ss/Development/open-hand-worktrees/US-015/dist/index.html'"
-  - text: at readFileSync (node:fs:436:20)
-  - text: at file:///Users/cr0ss/Development/open-hand-worktrees/US-015/node_modules/.vite-temp/vite.config.ts.timestamp-1777268546620-1d9d9a62be1b98.mjs:14:19
-  - text: at call (file:///Users/cr0ss/Development/open-hand-worktrees/US-015/node_modules/vite/dist/node/chunks/node.js:6183:5)
-  - text: at next (file:///Users/cr0ss/Development/open-hand-worktrees/US-015/node_modules/vite/dist/node/chunks/node.js:6136:4)
-  - text: at viteHtmlFallbackMiddleware (file:///Users/cr0ss/Development/open-hand-worktrees/US-015/node_modules/vite/dist/node/chunks/node.js:25190:3)
-  - text: at call (file:///Users/cr0ss/Development/open-hand-worktrees/US-015/node_modules/vite/dist/node/chunks/node.js:6183:5)
-  - text: at next (file:///Users/cr0ss/Development/open-hand-worktrees/US-015/node_modules/vite/dist/node/chunks/node.js:6136:4)
-  - text: at file:///Users/cr0ss/Development/open-hand-worktrees/US-015/node_modules/vite/dist/node/chunks/node.js:23981:28
-  - text: at viteAssetMiddleware (file:///Users/cr0ss/Development/open-hand-worktrees/US-015/node_modules/vite/dist/node/chunks/node.js:33694:4)
-  - text: at call (file:///Users/cr0ss/Development/open-hand-worktrees/US-015/node_modules/vite/dist/node/chunks/node.js:6183:5)
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - heading "Open Hand" [level=1] [ref=e5]
+  - navigation "Main navigation" [ref=e6]:
+    - list [ref=e7]:
+      - listitem [ref=e8]:
+        - link "Home" [ref=e9] [cursor=pointer]:
+          - /url: "#/"
+      - listitem [ref=e10]:
+        - link "Browse" [ref=e11] [cursor=pointer]:
+          - /url: "#/browse"
+      - listitem [ref=e12]:
+        - link "Play" [ref=e13] [cursor=pointer]:
+          - /url: "#/play"
+      - listitem [ref=e14]:
+        - link "Draw 3" [ref=e15] [cursor=pointer]:
+          - /url: "#/play/draw-three"
+      - listitem [ref=e16]:
+        - link "Guide" [ref=e17] [cursor=pointer]:
+          - /url: "#/guide"
+  - main [ref=e18]:
+    - heading "Card Deck v2" [level=2] [ref=e19]
+    - paragraph [ref=e20]: Welcome to Open Hand
 ```
 
 # Test source

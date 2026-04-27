@@ -2,50 +2,31 @@ import { useState, useEffect } from 'react'
 import { Layout } from './ui/Layout/Layout'
 import { PlayGuide } from './features/guide'
 import { BrowseAllCards } from './features/browse'
+import { SingleDraw } from './features/play/SingleDraw'
+import { cardDeck } from './data'
 
-function getPath() {
-  return window.location.pathname
+function getRoute(): string {
+  return window.location.hash.replace('#', '') || '/'
 }
 
 function App() {
-  const [path, setPath] = useState(getPath)
+  const [route, setRoute] = useState(getRoute)
 
   useEffect(() => {
-    const onPopState = () => setPath(getPath())
-    window.addEventListener('popstate', onPopState)
-    return () => window.removeEventListener('popstate', onPopState)
-  }, [])
-
-  useEffect(() => {
-    const onClick = (e: MouseEvent) => {
-      const anchor = (e.target as HTMLElement).closest('a')
-      if (
-        anchor &&
-        anchor.href &&
-        anchor.origin === window.location.origin &&
-        !e.ctrlKey &&
-        !e.metaKey &&
-        !e.shiftKey &&
-        !anchor.hasAttribute('download') &&
-        anchor.target !== '_blank'
-      ) {
-        e.preventDefault()
-        const next = new URL(anchor.href).pathname
-        if (next !== window.location.pathname) {
-          window.history.pushState(null, '', next)
-          setPath(next)
-        }
-      }
+    function onHashChange() {
+      setRoute(getRoute())
     }
-    document.addEventListener('click', onClick)
-    return () => document.removeEventListener('click', onClick)
+    window.addEventListener('hashchange', onHashChange)
+    return () => window.removeEventListener('hashchange', onHashChange)
   }, [])
 
   return (
     <Layout>
-      {path === '/guide' ? (
+      {route === '/play' ? (
+        <SingleDraw cards={cardDeck} />
+      ) : route === '/guide' ? (
         <PlayGuide />
-      ) : path === '/browse' ? (
+      ) : route === '/browse' ? (
         <BrowseAllCards />
       ) : (
         <>

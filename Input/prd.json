@@ -69,15 +69,14 @@
         "Layout remains usable on desktop"
       ],
       "priority": 1,
-      "passes": false,
+      "passes": true,
       "depends_on": [
         "US-001",
         "US-002",
         "US-003"
       ],
       "notes": "Feature pages plug into this shell.",
-      "status": "in_progress",
-      "claimed_by": "worker-2"
+      "status": "pass"
     },
     {
       "id": "US-005",
@@ -116,7 +115,8 @@
         "US-005"
       ],
       "notes": "CSV is source of truth.",
-      "status": "available"
+      "status": "in_progress",
+      "claimed_by": "worker-3"
     },
     {
       "id": "US-007",

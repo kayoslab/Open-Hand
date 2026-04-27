@@ -6,3 +6,5 @@
 
 ## US-005: Define typed card domain model
 
+## US-004: Create responsive application shell
+

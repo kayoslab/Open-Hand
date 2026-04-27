@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import type { Card } from '../../src/domain/card';
 
 // Mock the card deck data module so we can control what BrowseAllCards receives
@@ -105,6 +105,119 @@ describe('BrowseAllCards', () => {
       const gridContainer = articles[0].parentElement;
       expect(gridContainer).toBeDefined();
       expect(gridContainer).toBe(articles[1].parentElement);
+    });
+  });
+
+  describe('US-012: tier filter integration', () => {
+    it('renders the tier filter component on the browse page', () => {
+      fillMockCards([
+        makeCard({ cardNumber: 1, tier: 'Open' }),
+        makeCard({ cardNumber: 2, tier: 'Working' }),
+      ]);
+
+      render(<BrowseAllCards />);
+
+      // Tier filter buttons should be present
+      expect(screen.getByRole('button', { name: /open/i })).toBeDefined();
+      expect(screen.getByRole('button', { name: /working/i })).toBeDefined();
+      expect(screen.getByRole('button', { name: /deep/i })).toBeDefined();
+    });
+
+    it('selecting a tier reduces displayed cards to that tier only', () => {
+      fillMockCards([
+        makeCard({ cardNumber: 1, tier: 'Open' }),
+        makeCard({ cardNumber: 2, tier: 'Working' }),
+        makeCard({ cardNumber: 3, tier: 'Deep' }),
+        makeCard({ cardNumber: 4, tier: 'Open' }),
+      ]);
+
+      render(<BrowseAllCards />);
+
+      // Initially shows all 4 cards
+      expect(screen.getAllByRole('article')).toHaveLength(4);
+
+      // Click Open tier filter
+      fireEvent.click(screen.getByRole('button', { name: /open/i }));
+
+      // Should now show only 2 Open cards
+      const articles = screen.getAllByRole('article');
+      expect(articles).toHaveLength(2);
+      expect(articles.every((a) => a.getAttribute('data-tier') === 'Open')).toBe(true);
+    });
+
+    it('multiple tiers can be active simultaneously', () => {
+      fillMockCards([
+        makeCard({ cardNumber: 1, tier: 'Open' }),
+        makeCard({ cardNumber: 2, tier: 'Working' }),
+        makeCard({ cardNumber: 3, tier: 'Deep' }),
+      ]);
+
+      render(<BrowseAllCards />);
+
+      // Select Open and Deep
+      fireEvent.click(screen.getByRole('button', { name: /open/i }));
+      fireEvent.click(screen.getByRole('button', { name: /deep/i }));
+
+      const articles = screen.getAllByRole('article');
+      expect(articles).toHaveLength(2);
+      const tiers = articles.map((a) => a.getAttribute('data-tier'));
+      expect(tiers).toContain('Open');
+      expect(tiers).toContain('Deep');
+    });
+
+    it('toggling a tier off removes it from the active filter', () => {
+      fillMockCards([
+        makeCard({ cardNumber: 1, tier: 'Open' }),
+        makeCard({ cardNumber: 2, tier: 'Working' }),
+        makeCard({ cardNumber: 3, tier: 'Deep' }),
+      ]);
+
+      render(<BrowseAllCards />);
+
+      // Select Open, then toggle it off
+      fireEvent.click(screen.getByRole('button', { name: /open/i }));
+      expect(screen.getAllByRole('article')).toHaveLength(1);
+
+      fireEvent.click(screen.getByRole('button', { name: /open/i }));
+      // All cards should be shown again
+      expect(screen.getAllByRole('article')).toHaveLength(3);
+    });
+
+    it('clearing filters restores all cards', () => {
+      fillMockCards([
+        makeCard({ cardNumber: 1, tier: 'Open' }),
+        makeCard({ cardNumber: 2, tier: 'Working' }),
+        makeCard({ cardNumber: 3, tier: 'Deep' }),
+      ]);
+
+      render(<BrowseAllCards />);
+
+      // Select a tier to activate filtering
+      fireEvent.click(screen.getByRole('button', { name: /working/i }));
+      expect(screen.getAllByRole('article')).toHaveLength(1);
+
+      // Click clear filters
+      fireEvent.click(screen.getByRole('button', { name: /clear/i }));
+
+      // All cards should be restored
+      expect(screen.getAllByRole('article')).toHaveLength(3);
+    });
+
+    it('card count updates when tier filter is applied', () => {
+      fillMockCards([
+        makeCard({ cardNumber: 1, tier: 'Open' }),
+        makeCard({ cardNumber: 2, tier: 'Working' }),
+        makeCard({ cardNumber: 3, tier: 'Deep' }),
+      ]);
+
+      render(<BrowseAllCards />);
+
+      // Initially shows total count
+      expect(screen.getByText('3 cards')).toBeDefined();
+
+      // Filter to Working only
+      fireEvent.click(screen.getByRole('button', { name: /working/i }));
+      expect(screen.getByText(/1 cards?/)).toBeDefined();
     });
   });
 });

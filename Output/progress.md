@@ -22,3 +22,5 @@
 
 ## US-014: Create single random draw mode
 
+## US-011: Add category filters
+

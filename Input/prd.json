@@ -206,12 +206,12 @@
         "Clear filters action exists"
       ],
       "priority": 2,
-      "passes": false,
+      "passes": true,
       "depends_on": [
         "US-010"
       ],
       "notes": "Single-purpose filter ticket.",
-      "status": "available"
+      "status": "pass"
     },
     {
       "id": "US-012",
@@ -287,7 +287,8 @@
         "US-014"
       ],
       "notes": "Implements play guide mechanic.",
-      "status": "available"
+      "status": "in_progress",
+      "claimed_by": "worker-1"
     },
     {
       "id": "US-016",

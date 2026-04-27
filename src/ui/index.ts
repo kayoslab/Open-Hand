@@ -3,3 +3,4 @@ export { Header } from './Header/Header';
 export { Nav } from './Nav/Nav';
 export { Layout } from './Layout/Layout';
 export { CardVisual } from './CardVisual/CardVisual';
+export { TierFilter } from './TierFilter/TierFilter';

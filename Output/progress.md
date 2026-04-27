@@ -10,3 +10,5 @@
 
 ## US-006: Load and parse card_deck.csv
 
+## US-008: Create reusable visual card component
+

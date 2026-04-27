@@ -134,7 +134,8 @@
         "US-006"
       ],
       "notes": "Protects later UI tickets.",
-      "status": "available"
+      "status": "in_progress",
+      "claimed_by": "worker-3"
     },
     {
       "id": "US-008",
@@ -148,14 +149,13 @@
         "Card shows flavour text when present"
       ],
       "priority": 1,
-      "passes": false,
+      "passes": true,
       "depends_on": [
         "US-004",
         "US-005"
       ],
       "notes": "Shared UI component.",
-      "status": "in_progress",
-      "claimed_by": "worker-2"
+      "status": "pass"
     },
     {
       "id": "US-009",

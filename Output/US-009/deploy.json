@@ -1,0 +1,1 @@
+{"decision":"pass","gates_checked":["lint","typecheck","tests"],"failures":[],"notes":"All 121 tests pass (8 test files), including 24 card-visual tests covering tier tokens, text labels, and accessibility. Lint and typecheck clean."}

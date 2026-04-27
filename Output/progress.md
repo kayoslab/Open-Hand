@@ -20,3 +20,5 @@
 
 ## US-010: Create browse all cards page
 
+## US-014: Create single random draw mode
+

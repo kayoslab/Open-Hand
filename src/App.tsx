@@ -3,6 +3,7 @@ import { Layout } from './ui/Layout/Layout'
 import { PlayGuide } from './features/guide'
 import { BrowseAllCards } from './features/browse'
 import { SingleDraw } from './features/play/SingleDraw'
+import { DrawThreeKeepOne } from './features/play/DrawThreeKeepOne'
 import { cardDeck } from './data'
 
 function getRoute(): string {
@@ -22,7 +23,9 @@ function App() {
 
   return (
     <Layout>
-      {route === '/play' ? (
+      {route === '/play/draw-three' ? (
+        <DrawThreeKeepOne cards={cardDeck} />
+      ) : route === '/play' ? (
         <SingleDraw cards={cardDeck} />
       ) : route === '/guide' ? (
         <PlayGuide />

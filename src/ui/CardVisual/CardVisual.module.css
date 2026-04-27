@@ -35,18 +35,26 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.06em;
+  display: inline-block;
+  width: fit-content;
+  padding: 0.125rem 0.625rem;
+  border-radius: 9999px;
+  line-height: 1.5;
 }
 
 .tierOpen .tierMarker {
   color: var(--color-tier-open);
+  background-color: var(--color-tier-open-bg);
 }
 
 .tierWorking .tierMarker {
   color: var(--color-tier-working);
+  background-color: var(--color-tier-working-bg);
 }
 
 .tierDeep .tierMarker {
   color: var(--color-tier-deep);
+  background-color: var(--color-tier-deep-bg);
 }
 
 .title {

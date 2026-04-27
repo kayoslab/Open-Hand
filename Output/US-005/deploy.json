@@ -1,0 +1,1 @@
+{"decision":"pass","gates_checked":["typecheck","lint","tests"],"failures":[],"notes":"All gates green. typecheck: clean. lint: clean. tests: 71/71 passed across 5 files including 16 card-domain-model tests."}

@@ -8,3 +8,5 @@
 
 ## US-004: Create responsive application shell
 
+## US-006: Load and parse card_deck.csv
+

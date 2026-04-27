@@ -34,3 +34,5 @@
 
 ## US-019: Add accessibility and keyboard navigation
 
+## US-020: Deploy static site to Vercel
+

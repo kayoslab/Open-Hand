@@ -1,2 +1,1 @@
-// Browse feature: deck browsing UI
-export {};
+export { BrowseAllCards } from './BrowseAllCards';

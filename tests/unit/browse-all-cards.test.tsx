@@ -95,7 +95,7 @@ describe('BrowseAllCards', () => {
       const cards = [makeCard({ cardNumber: 1 }), makeCard({ cardNumber: 2 })];
       fillMockCards(cards);
 
-      const { container } = render(<BrowseAllCards />);
+      render(<BrowseAllCards />);
 
       // The grid container should exist and contain the card articles
       const articles = screen.getAllByRole('article');

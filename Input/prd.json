@@ -336,15 +336,14 @@
         "No backend is required"
       ],
       "priority": 3,
-      "passes": false,
+      "passes": true,
       "depends_on": [
         "US-011",
         "US-012",
         "US-014"
       ],
       "notes": "Use localStorage only.",
-      "status": "in_progress",
-      "claimed_by": "worker-3"
+      "status": "pass"
     },
     {
       "id": "US-019",

@@ -36,3 +36,5 @@
 
 ## US-020: Deploy static site to Vercel
 
+## US-018: Persist lightweight preferences locally
+

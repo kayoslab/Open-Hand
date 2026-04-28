@@ -6,6 +6,7 @@ import { SingleDraw } from './features/play/SingleDraw'
 import { DrawThreeKeepOne } from './features/play/DrawThreeKeepOne'
 import { cardDeck } from './data'
 import { useLocalStorage } from './hooks/useLocalStorage'
+import { useTheme } from './hooks/useTheme'
 import { validateRoute } from './domain/preferences'
 
 function getHashRoute(): string {
@@ -13,6 +14,7 @@ function getHashRoute(): string {
 }
 
 function App() {
+  const [theme, toggleTheme] = useTheme()
   const [route, setRoute] = useLocalStorage('openhand:lastRoute', '/', validateRoute)
 
   useEffect(() => {
@@ -35,7 +37,7 @@ function App() {
   }, [setRoute])
 
   return (
-    <Layout>
+    <Layout theme={theme} onToggleTheme={toggleTheme}>
       {route === '/play/draw-three' ? (
         <DrawThreeKeepOne cards={cardDeck} />
       ) : route === '/play' ? (

@@ -24,7 +24,7 @@
   font-size: var(--font-size-lg);
   margin-top: var(--space-xl);
   margin-bottom: var(--space-sm);
-  color: var(--color-brand-light);
+  color: var(--color-text-secondary);
 }
 
 .guide p {
@@ -44,7 +44,7 @@
 .guide code {
   background: var(--color-surface-alt);
   padding: 0.1em 0.4em;
-  border-radius: 3px;
+  border-radius: var(--radius-sm);
   font-size: var(--font-size-sm);
 }
 

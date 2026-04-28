@@ -3,6 +3,7 @@ import type { Card } from '../../domain/card';
 import { createDrawPool, drawThree, resetPool } from '../../domain/drawRandom';
 import type { DrawPool } from '../../domain/drawRandom';
 import { CardVisual } from '../../ui/CardVisual/CardVisual';
+import cardStyles from '../../ui/CardVisual/CardVisual.module.css';
 import styles from './DrawThreeKeepOne.module.css';
 
 type Phase = 'ready' | 'choosing' | 'kept';
@@ -17,12 +18,14 @@ export function DrawThreeKeepOne({ cards }: DrawThreeKeepOneProps) {
   const [drawnCards, setDrawnCards] = useState<Card[]>([]);
   const [keptCard, setKeptCard] = useState<Card | null>(null);
   const [remaining, setRemaining] = useState(cards.length);
+  const [drawCount, setDrawCount] = useState(0);
 
   const handleDraw = useCallback(() => {
     const result = drawThree(poolRef.current);
     poolRef.current = result.pool;
     setDrawnCards(result.cards);
     setRemaining(result.pool.available.length);
+    setDrawCount((c) => c + 1);
     setPhase('choosing');
   }, []);
 
@@ -38,6 +41,7 @@ export function DrawThreeKeepOne({ cards }: DrawThreeKeepOneProps) {
     setDrawnCards(result.cards);
     setKeptCard(null);
     setRemaining(result.pool.available.length);
+    setDrawCount((c) => c + 1);
     setPhase('choosing');
   }, []);
 
@@ -84,7 +88,7 @@ export function DrawThreeKeepOne({ cards }: DrawThreeKeepOneProps) {
       </div>
 
       {phase === 'choosing' && drawnCards.length > 0 && (
-        <div className={styles.cardGrid}>
+        <div className={styles.cardGrid} key={drawCount}>
           {drawnCards.map((card) => (
             <button
               key={card.cardNumber}
@@ -105,8 +109,8 @@ export function DrawThreeKeepOne({ cards }: DrawThreeKeepOneProps) {
       )}
 
       {phase === 'kept' && keptCard && (
-        <div className={styles.keptArea}>
-          <CardVisual card={keptCard} />
+        <div className={styles.keptArea} key={keptCard.cardNumber}>
+          <CardVisual card={keptCard} className={cardStyles.cardEnter} />
         </div>
       )}
     </div>

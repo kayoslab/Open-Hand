@@ -31,19 +31,20 @@
   font-family: var(--font-family-sans);
   font-size: var(--font-size-base);
   padding: var(--space-sm) var(--space-lg);
-  border-radius: 6px;
+  border-radius: var(--radius-md);
   border: none;
   cursor: pointer;
-  transition: background 0.15s ease, opacity 0.15s ease;
+  transition: background var(--duration-fast) var(--ease-standard),
+              opacity var(--duration-fast) var(--ease-standard);
 }
 
 .drawButton {
   background: var(--color-brand);
-  color: #fff;
+  color: var(--color-on-brand);
 }
 
 .drawButton:hover:not(:disabled) {
-  background: var(--color-brand-light);
+  filter: brightness(1.15);
 }
 
 .drawButton:disabled {

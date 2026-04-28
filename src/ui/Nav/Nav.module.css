@@ -1,5 +1,5 @@
 .nav {
-  background: var(--color-brand-light);
+  background: var(--color-surface-brand);
   padding: var(--space-sm) var(--space-lg);
 }
 
@@ -11,12 +11,12 @@
 }
 
 .link {
-  color: #fff;
+  color: var(--color-on-brand);
   text-decoration: none;
   font-size: var(--font-size-sm);
   padding: var(--space-xs) var(--space-sm);
-  border-radius: 4px;
-  transition: background 0.15s ease;
+  border-radius: var(--radius-sm);
+  transition: background var(--duration-fast) var(--ease-standard);
 }
 
 .link:hover {
@@ -24,7 +24,7 @@
 }
 
 .link:focus {
-  outline: 2px solid #fff;
+  outline: 2px solid var(--color-on-brand);
   outline-offset: 2px;
 }
 

@@ -7,6 +7,7 @@ interface CardVisualProps {
   pairedCard?: Card;
   onPairClick?: (cardNumber: number) => void;
   children?: ReactNode;
+  className?: string;
 }
 
 const tierClass: Record<Card['tier'], string> = {
@@ -15,10 +16,10 @@ const tierClass: Record<Card['tier'], string> = {
   Deep: styles.tierDeep,
 };
 
-export function CardVisual({ card, pairedCard, onPairClick, children }: CardVisualProps) {
+export function CardVisual({ card, pairedCard, onPairClick, children, className }: CardVisualProps) {
   return (
     <article
-      className={`${styles.card} ${tierClass[card.tier]}`}
+      className={`${styles.card} ${tierClass[card.tier]}${className ? ` ${className}` : ''}`}
       data-tier={card.tier}
       data-card-number={card.cardNumber}
     >

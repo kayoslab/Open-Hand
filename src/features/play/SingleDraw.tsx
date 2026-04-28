@@ -3,6 +3,7 @@ import type { Card } from '../../domain/card';
 import { createDrawPool, drawOne, resetPool } from '../../domain/drawRandom';
 import type { DrawPool } from '../../domain/drawRandom';
 import { CardVisual } from '../../ui/CardVisual/CardVisual';
+import cardStyles from '../../ui/CardVisual/CardVisual.module.css';
 import styles from './SingleDraw.module.css';
 
 interface SingleDrawProps {
@@ -50,8 +51,8 @@ export function SingleDraw({ cards }: SingleDrawProps) {
         </button>
       </div>
       {currentCard && (
-        <div className={styles.cardArea}>
-          <CardVisual card={currentCard} />
+        <div className={styles.cardArea} key={currentCard.cardNumber}>
+          <CardVisual card={currentCard} className={cardStyles.cardEnter} />
         </div>
       )}
     </div>

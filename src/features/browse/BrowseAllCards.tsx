@@ -59,6 +59,29 @@ export function BrowseAllCards() {
 
   const filteredCards = filterByText(filterByTier(cardDeck, activeTiers), searchQuery);
   const hasActiveSearch = searchQuery.trim() !== '';
+  const infraCards = filteredCards.filter((c) => c.category === 'Infrastructure');
+  const questionCards = filteredCards.filter((c) => c.category !== 'Infrastructure');
+
+  const renderCard = (card: Card) => {
+    const paired = card.pairsWith != null
+      ? cardLookup.get(card.pairsWith)
+      : undefined;
+    return (
+      <CardVisual key={card.cardNumber} card={card}>
+        {paired && (
+          <div className={styles.pairing}>
+            <button
+              type="button"
+              className={styles.pairingLink}
+              onClick={() => handlePairClick(paired.cardNumber)}
+            >
+              Pairs with
+            </button>
+          </div>
+        )}
+      </CardVisual>
+    );
+  };
 
   return (
     <div className={styles.page}>
@@ -69,28 +92,24 @@ export function BrowseAllCards() {
       {filteredCards.length === 0 && hasActiveSearch ? (
         <p className={styles.emptyState}>No cards match your search.</p>
       ) : (
-        <div className={styles.grid}>
-          {filteredCards.map((card) => {
-            const paired = card.pairsWith != null
-              ? cardLookup.get(card.pairsWith)
-              : undefined;
-            return (
-              <CardVisual key={card.cardNumber} card={card}>
-                {paired && (
-                  <div className={styles.pairing}>
-                    <button
-                      type="button"
-                      className={styles.pairingLink}
-                      onClick={() => handlePairClick(paired.cardNumber)}
-                    >
-                      Pairs with
-                    </button>
-                  </div>
-                )}
-              </CardVisual>
-            );
-          })}
-        </div>
+        <>
+          {infraCards.length > 0 && (
+            <section className={styles.ritualSection}>
+              <h3 className={styles.sectionHeading}>Ritual Cards</h3>
+              <p className={styles.sectionDesc}>
+                Bookends and rules of play. Used every conversation.
+              </p>
+              <div className={styles.ritualGrid}>
+                {infraCards.map(renderCard)}
+              </div>
+            </section>
+          )}
+          {questionCards.length > 0 && (
+            <div className={styles.grid}>
+              {questionCards.map(renderCard)}
+            </div>
+          )}
+        </>
       )}
     </div>
   );

@@ -54,6 +54,46 @@
   color: var(--color-text);
 }
 
+/* Ritual / Infrastructure cards section */
+.ritualSection {
+  padding: var(--space-lg);
+  background: var(--color-surface-alt);
+  border-radius: var(--radius-lg);
+}
+
+.sectionHeading {
+  font-family: var(--font-family);
+  font-size: var(--font-size-xl);
+  font-weight: 400;
+  color: var(--color-text);
+  margin-bottom: var(--space-xs);
+}
+
+.sectionDesc {
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-lg);
+}
+
+.ritualGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+@media (min-width: 600px) {
+  .ritualGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .ritualGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media (min-width: 600px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);

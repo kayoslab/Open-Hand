@@ -2,7 +2,7 @@
   background: var(--color-surface-brand);
   display: flex;
   align-items: center;
-  padding: var(--space-sm) var(--space-lg);
+  padding: 0 var(--space-lg);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -17,7 +17,7 @@
 }
 
 .logoImg {
-  height: 2rem;
+  height: 2.5rem;
   width: auto;
 }
 
@@ -170,7 +170,7 @@
 /* Desktop */
 @media (min-width: 768px) {
   .topBar {
-    padding: var(--space-sm) var(--space-xl);
+    padding: 0 var(--space-xl);
   }
 
   .nav {

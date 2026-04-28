@@ -272,7 +272,7 @@ describe('US-018: Persistence integration', () => {
       render(<App />);
 
       // Should show welcome/home page (default)
-      expect(screen.getByText(/welcome/i)).toBeDefined();
+      expect(screen.getByText(/better conversations/i)).toBeDefined();
     });
 
     it('renders home page when persisted route is an unknown route', async () => {
@@ -284,7 +284,7 @@ describe('US-018: Persistence integration', () => {
       render(<App />);
 
       // Unknown route falls through to home
-      expect(screen.getByText(/welcome/i)).toBeDefined();
+      expect(screen.getByText(/better conversations/i)).toBeDefined();
     });
   });
 });

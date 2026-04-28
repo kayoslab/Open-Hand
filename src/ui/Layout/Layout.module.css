@@ -26,3 +26,8 @@
     margin: 0 auto;
   }
 }
+
+.mainFullBleed {
+  padding: 0;
+  max-width: 100%;
+}

@@ -1,9 +1,13 @@
 import { useEffect } from 'react'
 import { Layout } from './ui/Layout/Layout'
+import { HomePage } from './features/home'
 import { PlayGuide } from './features/guide'
 import { BrowseAllCards } from './features/browse'
 import { SingleDraw } from './features/play/SingleDraw'
 import { DrawThreeKeepOne } from './features/play/DrawThreeKeepOne'
+import { ForTeams } from './features/teams'
+import { Resources } from './features/resources'
+import { About } from './features/about'
 import { cardDeck } from './data'
 import { useLocalStorage } from './hooks/useLocalStorage'
 import { useTheme } from './hooks/useTheme'
@@ -37,7 +41,7 @@ function App() {
   }, [setRoute])
 
   return (
-    <Layout theme={theme} onToggleTheme={toggleTheme}>
+    <Layout theme={theme} onToggleTheme={toggleTheme} isHomePage={route === '/'}>
       {route === '/play/draw-three' ? (
         <DrawThreeKeepOne cards={cardDeck} />
       ) : route === '/play' ? (
@@ -46,11 +50,14 @@ function App() {
         <PlayGuide />
       ) : route === '/browse' ? (
         <BrowseAllCards />
+      ) : route === '/for-teams' ? (
+        <ForTeams />
+      ) : route === '/resources' ? (
+        <Resources />
+      ) : route === '/about' ? (
+        <About />
       ) : (
-        <>
-          <h2>Card Deck v2</h2>
-          <p>Welcome to Open Hand</p>
-        </>
+        <HomePage />
       )}
     </Layout>
   )

@@ -1,5 +1,4 @@
 import { type ReactNode } from 'react';
-import { Header } from '../Header/Header';
 import { Nav } from '../Nav/Nav';
 import styles from './Layout.module.css';
 
@@ -7,14 +6,16 @@ interface LayoutProps {
   children: ReactNode;
   theme: 'light' | 'dark';
   onToggleTheme: () => void;
+  isHomePage?: boolean;
 }
 
-export function Layout({ children, theme, onToggleTheme }: LayoutProps) {
+export function Layout({ children, theme, onToggleTheme, isHomePage }: LayoutProps) {
   return (
     <div className={styles.layout}>
-      <Header theme={theme} onToggleTheme={onToggleTheme} />
-      <Nav />
-      <main className={styles.main}>{children}</main>
+      <Nav theme={theme} onToggleTheme={onToggleTheme} />
+      <main className={`${styles.main} ${isHomePage ? styles.mainFullBleed : ''}`}>
+        {children}
+      </main>
     </div>
   );
 }

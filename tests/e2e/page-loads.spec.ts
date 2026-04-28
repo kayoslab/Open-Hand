@@ -8,7 +8,7 @@ test.describe("Default page", () => {
     await expect(page).toHaveTitle(/.+/);
 
     // The heading should be visible
-    const heading = page.getByRole("heading", { name: /card deck/i });
+    const heading = page.getByRole("heading", { name: /better conversations/i });
     await expect(heading).toBeVisible();
   });
 

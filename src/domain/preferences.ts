@@ -1,7 +1,7 @@
 import type { Tier } from './card';
 
 const VALID_TIERS: readonly string[] = ['Open', 'Working', 'Deep'];
-const VALID_ROUTES: readonly string[] = ['/', '/browse', '/play', '/play/draw-three', '/guide'];
+const VALID_ROUTES: readonly string[] = ['/', '/browse', '/play', '/play/draw-three', '/guide', '/for-teams', '/resources', '/about'];
 
 export function validateRoute(val: unknown): val is string {
   return typeof val === 'string' && VALID_ROUTES.includes(val);

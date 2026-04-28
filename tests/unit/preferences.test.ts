@@ -137,6 +137,18 @@ describe('preferences validation', () => {
       expect(validateRoute('/guide')).toBe(true);
     });
 
+    it('accepts valid route "/for-teams"', () => {
+      expect(validateRoute('/for-teams')).toBe(true);
+    });
+
+    it('accepts valid route "/resources"', () => {
+      expect(validateRoute('/resources')).toBe(true);
+    });
+
+    it('accepts valid route "/about"', () => {
+      expect(validateRoute('/about')).toBe(true);
+    });
+
     it('rejects unknown routes', () => {
       expect(validateRoute('/unknown')).toBe(false);
       expect(validateRoute('/admin')).toBe(false);

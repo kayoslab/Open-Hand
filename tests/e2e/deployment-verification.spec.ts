@@ -18,7 +18,7 @@ test.describe("Deployment verification", () => {
 
   test.describe("Client-side routes resolve correctly after refresh", () => {
     const routes = [
-      { hash: "#/", label: /card deck/i },
+      { hash: "#/", label: /better conversations/i },
       { hash: "#/browse", label: /browse/i },
       { hash: "#/play", label: /draw/i },
       { hash: "#/play/draw-three", label: /draw three/i },

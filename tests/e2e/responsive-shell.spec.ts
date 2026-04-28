@@ -24,10 +24,18 @@ for (const viewport of viewports) {
       await expect(header).toBeVisible();
     });
 
-    test("navigation is visible", async ({ page }) => {
+    test("navigation is accessible", async ({ page }) => {
       await page.goto("/");
       const nav = page.getByRole("navigation");
-      await expect(nav).toBeVisible();
+      if (viewport.width >= 768) {
+        await expect(nav).toBeVisible();
+      } else {
+        // On mobile, nav is hidden behind hamburger menu
+        await expect(nav).toBeAttached();
+        const hamburger = page.getByLabel(/open menu/i);
+        await hamburger.click();
+        await expect(nav).toBeVisible();
+      }
     });
 
     test("main content area is visible", async ({ page }) => {

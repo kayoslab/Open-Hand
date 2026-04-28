@@ -1,0 +1,24 @@
+.page {
+  max-width: 65ch;
+  font-family: var(--font-family-sans);
+  line-height: 1.7;
+}
+
+.title {
+  font-family: var(--font-family);
+  font-size: var(--font-size-2xl);
+  color: var(--color-text);
+  margin-bottom: var(--space-lg);
+}
+
+.page h2 {
+  font-family: var(--font-family);
+  font-size: var(--font-size-xl);
+  margin-top: var(--space-2xl);
+  margin-bottom: var(--space-md);
+  color: var(--color-text);
+}
+
+.page p {
+  margin-bottom: var(--space-md);
+}

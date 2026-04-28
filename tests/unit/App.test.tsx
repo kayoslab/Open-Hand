@@ -7,10 +7,10 @@ describe("App component", () => {
     render(<App />);
   });
 
-  it("displays the Card Deck v2 heading", () => {
+  it("displays the home page heading", () => {
     render(<App />);
     expect(
-      screen.getByRole("heading", { name: /card deck/i })
+      screen.getByRole("heading", { name: /better conversations/i })
     ).toBeInTheDocument();
   });
 });

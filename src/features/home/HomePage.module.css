@@ -1,0 +1,197 @@
+.home {
+  width: 100%;
+}
+
+/* Hero section */
+.hero {
+  background: var(--color-surface-brand);
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: 70vh;
+}
+
+.heroContent {
+  padding: var(--space-2xl) var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-lg);
+  position: relative;
+  z-index: 1;
+}
+
+.heading {
+  font-family: var(--font-family);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 400;
+  color: var(--color-on-brand);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  max-width: 16ch;
+}
+
+.subtext {
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-base);
+  color: var(--color-on-brand);
+  opacity: 0.85;
+  line-height: 1.7;
+}
+
+/* Tier indicators */
+.tierIndicators {
+  display: flex;
+  gap: var(--space-lg);
+}
+
+.tierDot {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-sm);
+  color: var(--color-on-brand);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.dot {
+  display: inline-block;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+}
+
+/* CTAs */
+.heroCtas {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.ctaPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  background: var(--color-accent);
+  color: var(--color-surface-brand);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: filter var(--duration-fast) var(--ease-standard);
+}
+
+.ctaPrimary:hover {
+  filter: brightness(1.1);
+}
+
+.ctaPrimary:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.ctaSecondary {
+  display: inline-flex;
+  align-items: center;
+  background: transparent;
+  color: var(--color-on-brand);
+  border: 1px solid var(--color-on-brand);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: background var(--duration-fast) var(--ease-standard);
+}
+
+.ctaSecondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.ctaSecondary:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+/* Hero image */
+.heroImage {
+  display: none;
+}
+
+.heroImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 45%;
+}
+
+/* Features strip */
+.features {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+  padding: var(--space-2xl) var(--space-lg);
+  background: var(--color-surface-alt);
+}
+
+.featureCard {
+  background: var(--color-surface);
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+}
+
+.featureTitle {
+  font-family: var(--font-family);
+  font-size: var(--font-size-lg);
+  font-weight: 400;
+  color: var(--color-text);
+  margin-bottom: var(--space-xs);
+}
+
+.featureDesc {
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+/* Tablet: 2-col features, hero image visible */
+@media (min-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .heroContent {
+    padding: var(--space-2xl) var(--space-xl);
+  }
+
+  .heroImage {
+    display: block;
+    position: relative;
+  }
+
+  .features {
+    grid-template-columns: repeat(2, 1fr);
+    padding: var(--space-2xl) var(--space-xl);
+  }
+}
+
+/* Desktop: 4-col features, larger hero padding */
+@media (min-width: 1024px) {
+  .heroContent {
+    padding: var(--space-2xl) var(--space-2xl) var(--space-2xl) calc(var(--space-2xl) * 2);
+  }
+
+  .features {
+    grid-template-columns: repeat(4, 1fr);
+    padding: var(--space-2xl) calc(var(--space-2xl) * 2);
+  }
+}

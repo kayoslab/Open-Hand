@@ -15,7 +15,7 @@ describe("Hash-based routing", () => {
   it("renders home page for empty hash", () => {
     render(<App />);
     expect(
-      screen.getByRole("heading", { name: /card deck/i })
+      screen.getByRole("heading", { name: /better conversations/i })
     ).toBeInTheDocument();
   });
 
@@ -23,7 +23,7 @@ describe("Hash-based routing", () => {
     window.location.hash = "#/";
     render(<App />);
     expect(
-      screen.getByRole("heading", { name: /card deck/i })
+      screen.getByRole("heading", { name: /better conversations/i })
     ).toBeInTheDocument();
   });
 
@@ -63,7 +63,7 @@ describe("Hash-based routing", () => {
     render(<App />);
     act(() => setHash("#/nonexistent"));
     expect(
-      screen.getByRole("heading", { name: /card deck/i })
+      screen.getByRole("heading", { name: /better conversations/i })
     ).toBeInTheDocument();
   });
 
@@ -76,7 +76,7 @@ describe("Hash-based routing", () => {
 
     act(() => setHash("#/"));
     expect(
-      screen.getByRole("heading", { name: /card deck/i })
+      screen.getByRole("heading", { name: /better conversations/i })
     ).toBeInTheDocument();
   });
 

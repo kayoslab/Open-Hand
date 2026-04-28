@@ -1,0 +1,1 @@
+export { ForTeams } from './ForTeams';

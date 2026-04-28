@@ -86,31 +86,6 @@
   box-shadow: var(--focus-ring);
 }
 
-/* Theme toggle */
-.themeToggle {
-  background: none;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: var(--color-on-brand);
-  font-size: var(--font-size-base);
-  padding: var(--space-xs);
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: background var(--duration-fast) var(--ease-standard);
-  line-height: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.themeToggle:hover {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.themeToggle:focus-visible {
-  outline: none;
-  box-shadow: var(--focus-ring);
-}
-
 /* Hamburger */
 .hamburger {
   display: flex;

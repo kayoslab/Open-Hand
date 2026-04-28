@@ -1,11 +1,6 @@
 import { useState } from 'react';
 import styles from './Nav.module.css';
 
-interface NavProps {
-  theme: 'light' | 'dark';
-  onToggleTheme: () => void;
-}
-
 const navItems = [
   { label: 'The Deck', href: '#/browse' },
   { label: 'How It Works', href: '#/guide' },
@@ -14,7 +9,7 @@ const navItems = [
   { label: 'About', href: '#/about' },
 ];
 
-export function Nav({ theme, onToggleTheme }: NavProps) {
+export function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -46,14 +41,6 @@ export function Nav({ theme, onToggleTheme }: NavProps) {
         <a href="#/browse" className={styles.cta}>
           Get Your Deck
         </a>
-        <button
-          className={styles.themeToggle}
-          onClick={onToggleTheme}
-          aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-          type="button"
-        >
-          {theme === 'light' ? '\u263E' : '\u2600'}
-        </button>
         <button
           className={styles.hamburger}
           onClick={() => setMenuOpen((prev) => !prev)}

@@ -187,6 +187,25 @@
   transform: rotateY(180deg);
 }
 
+/* Pair highlight — applied via DOM when scrolling to a paired card */
+@keyframes cardHighlight {
+  0% {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), 0 0 0 0 var(--color-accent);
+  }
+  40% {
+    box-shadow: 0 18px 42px rgba(15, 34, 56, 0.16), 0 0 0 4px var(--color-accent);
+    transform: translateY(-6px);
+  }
+  100% {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), 0 0 0 0 var(--color-accent);
+    transform: translateY(0);
+  }
+}
+
+:global(.card-highlight) {
+  animation: cardHighlight var(--duration-flip) var(--ease-snap);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .card {
     transition: opacity 120ms ease-out;
@@ -203,5 +222,11 @@
 
   .flipInner {
     transition: opacity 120ms ease-out;
+  }
+
+  :global(.card-highlight) {
+    animation: none;
+    outline: 3px solid var(--color-accent);
+    outline-offset: 2px;
   }
 }

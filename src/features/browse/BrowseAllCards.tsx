@@ -24,7 +24,16 @@ export function BrowseAllCards() {
 
   const handlePairClick = (cardNumber: number) => {
     const target = document.querySelector(`[data-card-number="${cardNumber}"]`);
-    target?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (!target) return;
+    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    target.classList.remove('card-highlight');
+    // Force reflow so re-adding the class restarts the animation
+    void (target as HTMLElement).offsetWidth;
+    target.classList.add('card-highlight');
+    const cleanup = () => target.classList.remove('card-highlight');
+    target.addEventListener('animationend', cleanup, { once: true });
+    // Fallback for reduced-motion (animationend won't fire)
+    setTimeout(cleanup, 1000);
   };
 
   const handleToggle = (tier: Tier) => {

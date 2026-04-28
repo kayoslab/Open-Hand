@@ -4,15 +4,13 @@ import styles from './Layout.module.css';
 
 interface LayoutProps {
   children: ReactNode;
-  theme: 'light' | 'dark';
-  onToggleTheme: () => void;
   isHomePage?: boolean;
 }
 
-export function Layout({ children, theme, onToggleTheme, isHomePage }: LayoutProps) {
+export function Layout({ children, isHomePage }: LayoutProps) {
   return (
     <div className={styles.layout}>
-      <Nav theme={theme} onToggleTheme={onToggleTheme} />
+      <Nav />
       <main className={`${styles.main} ${isHomePage ? styles.mainFullBleed : ''}`}>
         {children}
       </main>

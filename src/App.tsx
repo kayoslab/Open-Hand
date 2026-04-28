@@ -18,7 +18,7 @@ function getHashRoute(): string {
 }
 
 function App() {
-  const [theme, toggleTheme] = useTheme()
+  useTheme()
   const [route, setRoute] = useLocalStorage('openhand:lastRoute', '/', validateRoute)
 
   useEffect(() => {
@@ -41,7 +41,7 @@ function App() {
   }, [setRoute])
 
   return (
-    <Layout theme={theme} onToggleTheme={toggleTheme} isHomePage={route === '/'}>
+    <Layout isHomePage={route === '/'}>
       {route === '/play/draw-three' ? (
         <DrawThreeKeepOne cards={cardDeck} />
       ) : route === '/play' ? (
